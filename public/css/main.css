@@ -1,0 +1,17 @@
+body {
+    background-color: #9acfea;
+
+}
+
+.left-side,
+.right-side {
+    height: 250px;
+}
+
+.rounded-container{
+
+    background-color: #D3FCE2;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 15px;
+}
