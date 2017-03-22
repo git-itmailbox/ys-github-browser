@@ -1,0 +1,15 @@
+{
+  "name": "yura/ys-github-browser",
+  "description": "Github Browser",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Yurii Shportko",
+      "email": "itmailbox@i.ua"
+    }
+  ],
+  "require": {
+    "amstaffix/pagination": "^1.1"
+  }
+}

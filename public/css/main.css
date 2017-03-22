@@ -3,9 +3,8 @@ body {
 
 }
 
-.left-side,
-.right-side {
-    height: 250px;
+.side {
+    height: 400px;
 }
 
 .rounded-container{

@@ -1,19 +1,22 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-6 bg-info left-side">
+        <div class="col-md-6 bg-info side">
             <h2><?= $repo->full_name ?></h2>
-            <ul>
-                <li>Description: <?= $repo->description ?></li>
-                <li>watchers: <?= $repo->watchers ?></li>
-                <li>forks: <?= $repo->forks ?></li>
-                <li>open issues: <?= $repo->open_issues ?></li>
-                <li>homepage: <?= $repo->homepage ?></li>
-                <li>GitHub repo: <?= $repo->html_url ?></li>
-                <li>created at: <?= $repo->created_at ?></li>
+            <ul class="list-group">
+                <li class="list-group-item">Description: <?= $repo->description ?></li>
+                <li class="list-group-item">watchers: <?= $repo->watchers ?></li>
+                <li class="list-group-item">forks: <?= $repo->forks ?></li>
+                <li class="list-group-item">open issues: <?= $repo->open_issues ?></li>
+                <li class="list-group-item">GitHub repo: <a href="<?= $repo->homepage ?>"><?= $repo->homepage ?></a>
+                </li>
+                <li class="list-group-item">GitHub repo: <a href="<?= $repo->html_url ?>"><?= $repo->html_url ?></a>
+                </li>
+                <li class="list-group-item">created at: <?= $repo->created_at ?></li>
             </ul>
         </div>
-        <div class="col-md-6 bg-success pre-scrollable right-side">
-            <h2>Contributors</h2>
+        <h2>Contributors</h2>
+        <div class="col-md-6 bg-warning pre-scrollable side">
+
 
             <?php if (!empty($contributors)): ?>
                 <?php foreach ($contributors as $contributor): ?>
@@ -24,7 +27,26 @@
                                 <a href="/user/<?= $contributor->login ?>"><?= $contributor->login ?></a>
                             </p>
                         </div>
-                        <div class="col-md-4"><button class="btn-primary">Like</button></div>
+                        <div class="col-md-4">
+                            <?php
+
+                            //                            var_dump( in_array($contributor['id'], $likedUsers));
+
+                            if (isset($likedUsers[$contributor->id])): ?>
+
+                                <button class="btn-primary unlike" data-loginid="<?= $contributor->id ?>">UnLike
+                                </button>
+                                <button class="btn-primary like hidden" data-loginid="<?= $contributor->id ?>">Like
+                                </button>
+
+                            <?php else: ?>
+                                <button class="btn-primary like" data-loginid="<?= $contributor->id ?>">Like</button>
+                                <button class="btn-primary unlike hidden" data-loginid="<?= $contributor->id ?>">UnLike
+                                </button>
+
+                            <?php endif; ?>
+
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
@@ -32,3 +54,38 @@
     </div>
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        $(".unlike").on("click", function () {
+            unlike(this);
+        });
+        $(".like").on("click", function () {
+            like(this);
+        });
+    });
+
+    function unlike(e) {
+        var githubLoginId = $(e).data("loginid");
+        $.post("main/setlike", {id: githubLoginId, like: false}, function (data) {
+                if (data.state = true) {
+
+                    $(e).closest('div').find('.like').toggleClass("hidden");
+                    $(e).toggleClass("hidden");
+                }
+
+            },
+            'json');
+    }
+    function like(e) {
+        var githubLoginId = $(e).data("loginid");
+        $.post("main/setlike", {id: githubLoginId, like: true}, function (data) {
+                if (data.state = true) {
+                    $(e).closest('div').find('.unlike').toggleClass("hidden");
+                    $(e).toggleClass("hidden");
+                }
+            },
+            'json');
+    }
+
+</script>

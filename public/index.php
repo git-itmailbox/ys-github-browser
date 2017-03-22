@@ -23,6 +23,8 @@ spl_autoload_register(function ($class){
     }
 });
 
+require '../vendor/autoload.php';
+
 ////переадресация с /pages в /main
 //Router::add('^somepages/?(?P<action>[a-z-]+)?$', ['controller' => 'Main']);
 //
@@ -30,6 +32,7 @@ spl_autoload_register(function ($class){
 //Router::add('^page/(?P<alias>[a-z-]+)$', ['controller' => 'Page', 'action'=>'view']);
 Router::add('^user/(?P<user>[0-9-a-z-]+)?$', ['controller' => 'Main', 'action'=>'user']);
 Router::add('^repo/(?P<owner>[0-9-a-z-]+)/(?P<repo>[0-9-a-z-]+)$', ['controller' => 'Main', 'action'=>'index']);
+Router::add('^search/(?P<query>[0-9-a-z-]+)/?(page=)?(?P<page>[0-9]+)?$', ['controller' => 'Main', 'action'=>'search']);
 Router::add('^search$', ['controller' => 'Main', 'action'=>'search']);
 
 Router::add('^(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?/?$');

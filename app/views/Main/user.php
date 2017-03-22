@@ -11,9 +11,11 @@
         <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
             <h2><?= $user->name ?></h2>
             <ul>
-                <li><?= $user->login ?></li>
+                <li><h3><?= $user->login ?></h3> - <?= $user->id ?></li>
                 <li>company: <?= $user->company ?></li>
-                <li>blog: <?= $user->blog ?></li>
+                <li>blog: <a href="<?= $user->blog ?>"><?= $user->blog ?></a>
+
+                </li>
                 <li>followers: <?= $user->followers ?></li>
             </ul>
         </div>
