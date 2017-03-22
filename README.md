@@ -48,3 +48,12 @@ Notice that "root" look in ys-github-browser/public folder.
 If you set the servername not localhost dont forget to edit your hosts file
 
 5. <pre> php composer.phar update</pre> 
+6. comment line 
+<pre>
+require '../githubtoken';
+</pre>
+and  paste "your own github token" in public/index.php instead $token
+<pre>
+define('GITHUB_TOKEN', "Authorization: token $token");
+</pre>
+

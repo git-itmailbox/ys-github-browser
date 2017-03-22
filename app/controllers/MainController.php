@@ -64,6 +64,7 @@ class MainController extends AppController
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [GITHUB_TOKEN]);
         curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+
         $result = curl_exec($ch);
         curl_close($ch);
 
@@ -87,7 +88,6 @@ class MainController extends AppController
         //Сколько найдено ? нужно для пагинации
         $url = "https://api.github.com/search/repositories?q=$query&per_page=1";
         $results = self::sendCurlRequest(['url' => $url]);
-
         //api of github get only first 1k items
         $total_count = ($results->total_count<1000)? $results->total_count :1000;
         $pagination = new Pagination($total_count, $page, 10 /* itemsperpage */, 3 /* $neighbours*/);
