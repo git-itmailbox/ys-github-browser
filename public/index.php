@@ -1,7 +1,7 @@
 <?php
 use vendor\core\Router;
 $query =trim($_SERVER['QUERY_STRING'], '/');
-require '../githubtoken';
+//require '../githubtoken';
 
 
 
@@ -10,6 +10,7 @@ define('CORE', dirname(__DIR__).'vendor/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__).'/app');
 define('LAYOUT', 'default');
+
 // CHANGE TO YOUR OWN GITHUB TOKEN!!
 define('GITHUB_TOKEN', "Authorization: token $token");
 
