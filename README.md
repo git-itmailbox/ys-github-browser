@@ -52,7 +52,7 @@ If you set the servername not localhost dont forget to edit your hosts file
 <pre>
 require '../githubtoken';
 </pre>
-and  paste "your own github token" in public/index.php instead $token
+and  paste "your own github token" in public/index.php instead $token at line:15
 <pre>
 define('GITHUB_TOKEN', "Authorization: token $token");
 </pre>
