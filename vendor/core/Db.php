@@ -17,14 +17,10 @@ class Db
     {
         $db = require ROOT . '/config/config_db.php';
         $options = [
-
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-
-
         ];
         $this->pdo = new \PDO($db['dsn'],$db['user'], $db['pass'], $options);
-//        return ;
     }
 
 
@@ -55,5 +51,22 @@ class Db
         return [];
     }
 
+    public function queryOneRow($sql, $params = [])
+    {
+        $stmt = $this->pdo->prepare($sql);
 
+        $res = $stmt->execute($params);
+        if ($res !== false) {
+            return $stmt->fetch();
+        }
+        return [];
+    }
+    public function queryBindParams($sql, $params = [])
+    {
+        $stmt = $this->pdo->prepare($sql);
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+        return $stmt->execute();
+    }
 }

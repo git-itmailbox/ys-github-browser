@@ -7,7 +7,9 @@
     <title>YS-Github-Browser</title>
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
+
     <!--[if lt IE 9]>
+
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -32,7 +34,7 @@
 
             <li class=""><a href="/">Home</a></li>
 
-            <li><a href="/user/">My Page</a></li>
+            <li><a href="/user/git-itmailbox">My Page</a></li>
 
 
         </ul>
@@ -46,7 +48,9 @@
 
 </nav>
 <?=$content?>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

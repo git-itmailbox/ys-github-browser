@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: yura
- * Date: 02.03.17
- * Time: 23:17
- */
 
 namespace app\models;
 
@@ -36,5 +30,19 @@ class User extends Model
         $ids_str = implode(",", $ids);
             $sql = "SELECT * from {$this->table} WHERE `login_github_id` in ($ids_str) AND `is_like`=1";
         return $this->pdo->query($sql);
+    }
+
+    function setLike($githubUserId, $isLike){
+
+        $sql = "INSERT INTO {$this->table} (login_github_id, is_like) VALUES (:githubUserId, :isLike)
+                ON DUPLICATE KEY UPDATE is_like = :isLike;";
+
+        $bindParams = [
+            ':githubUserId' => $githubUserId,
+            ':isLike' => $isLike,
+        ];
+        $stmt = $this->pdo->queryBindParams($sql, $bindParams);
+        return $stmt;
+
     }
 }

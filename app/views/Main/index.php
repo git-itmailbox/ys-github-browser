@@ -22,28 +22,25 @@
                 <?php foreach ($contributors as $contributor): ?>
 
                     <div class="row">
-                        <div class="col-md-4 col-md-offset-2">
+                        <div class="col-md-3 col-md-offset-2">
                             <p>
-                                <a href="/user/<?= $contributor->login ?>"><?= $contributor->login ?></a>
+                                <a class="" href="/user/<?= $contributor->login ?>"><?= $contributor->login ?></a>
                             </p>
                         </div>
-                        <div class="col-md-4">
-                            <?php
-
-                            //                            var_dump( in_array($contributor['id'], $likedUsers));
-
-                            if (isset($likedUsers[$contributor->id])): ?>
-
-                                <button class="btn-primary unlike" data-loginid="<?= $contributor->id ?>">UnLike
+                        <div class="col-md-1">
+                            <?php if (isset($likedUsers[$contributor->id])): ?>
+                                <button class="btn-primary unlike" data-loginid="<?= $contributor->id ?>">
+                                    UnLike
                                 </button>
-                                <button class="btn-primary like hidden" data-loginid="<?= $contributor->id ?>">Like
+                                <button class="btn-primary like hidden" data-loginid="<?= $contributor->id ?>">
+                                    Like
                                 </button>
-
                             <?php else: ?>
-                                <button class="btn-primary like" data-loginid="<?= $contributor->id ?>">Like</button>
-                                <button class="btn-primary unlike hidden" data-loginid="<?= $contributor->id ?>">UnLike
+                                <button class="btn-primary like" data-loginid="<?= $contributor->id ?>">
+                                    Like</button>
+                                <button class="btn-primary unlike hidden" data-loginid="<?= $contributor->id ?>">
+                                    UnLike
                                 </button>
-
                             <?php endif; ?>
 
                         </div>
@@ -54,38 +51,3 @@
     </div>
 
 </div>
-
-<script>
-    $(document).ready(function () {
-        $(".unlike").on("click", function () {
-            unlike(this);
-        });
-        $(".like").on("click", function () {
-            like(this);
-        });
-    });
-
-    function unlike(e) {
-        var githubLoginId = $(e).data("loginid");
-        $.post("main/setlike", {id: githubLoginId, like: false}, function (data) {
-                if (data.state = true) {
-
-                    $(e).closest('div').find('.like').toggleClass("hidden");
-                    $(e).toggleClass("hidden");
-                }
-
-            },
-            'json');
-    }
-    function like(e) {
-        var githubLoginId = $(e).data("loginid");
-        $.post("main/setlike", {id: githubLoginId, like: true}, function (data) {
-                if (data.state = true) {
-                    $(e).closest('div').find('.unlike').toggleClass("hidden");
-                    $(e).toggleClass("hidden");
-                }
-            },
-            'json');
-    }
-
-</script>
