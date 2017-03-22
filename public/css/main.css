@@ -5,11 +5,18 @@ body {
 
 .side {
     height: 400px;
+    margin: 15px;
 }
 
+.contributors{
+    overflow-y: scroll;
+    overflow-style: auto;
+
+
+}
 .rounded-container{
 
-    background-color: #D3FCE2;
+    background-color: #c4ffaa;
     border-radius: 20px;
     padding: 15px;
     margin: 15px;

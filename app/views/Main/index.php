@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-6 bg-info side">
+        <div class="col-md-6 bg-success side">
             <h2><?= $repo->full_name ?></h2>
             <ul class="list-group">
                 <li class="list-group-item">Description: <?= $repo->description ?></li>
@@ -14,15 +14,15 @@
                 <li class="list-group-item">created at: <?= $repo->created_at ?></li>
             </ul>
         </div>
+        <div class="col-md-4 bg-success  side contributors">
         <h2>Contributors</h2>
-        <div class="col-md-6 bg-warning pre-scrollable side">
 
 
             <?php if (!empty($contributors)): ?>
                 <?php foreach ($contributors as $contributor): ?>
 
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-2">
+                        <div class="col-md-4 col-md-offset-2">
                             <p>
                                 <a class="" href="/user/<?= $contributor->login ?>"><?= $contributor->login ?></a>
                             </p>
