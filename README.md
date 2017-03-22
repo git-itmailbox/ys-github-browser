@@ -46,3 +46,5 @@ server {
 Notice that "root" look in ys-github-browser/public folder.
 
 If you set the servername not localhost dont forget to edit your hosts file
+
+5. <pre> php composer.phar update</pre> 
