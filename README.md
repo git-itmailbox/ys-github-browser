@@ -12,6 +12,7 @@ To install this app please:
 import mysql -u root -p {YOUR_DB_NAME} < /PATH/TO/dump.sql 
 </pre>
 Or may be by phpmyadmin.
+
 4. I use nginx, so config of server is like:
 <pre>
 # test task: github-browser
